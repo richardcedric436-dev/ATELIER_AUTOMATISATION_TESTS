@@ -51,11 +51,11 @@ jobs:
             remote_path="${TARGET_DIR}/${rel}"
             echo " - ${rel} -> ${remote_path}"
 
-            curl -sS --fail -X POST \
+            curl -sS --fail -X PUT \
               -H "Authorization: Token ${TOKEN}" \
               -F "content=@${file}" \
               "https://${HOST}/api/v0/user/${USER}/files/path${remote_path}" \
-              >/dev/null?overwrite=true
+              >/dev/null
 
           done < <(
             find . \
